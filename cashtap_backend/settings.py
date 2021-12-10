@@ -55,9 +55,6 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware'
 ]
 
-CORS_ORIGIN_WHITELIST = [
-    "http://localhost:3000",
-]
 
 ROOT_URLCONF = 'cashtap_backend.urls'
 
