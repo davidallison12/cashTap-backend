@@ -9,6 +9,7 @@ django-phonenumber-field = {extras = ["phonenumbers"], version = "*"}
 phonenumbers = "*"
 django-cors-headers = "*"
 djangorestframework = "*"
+djangorestframework-simplejwt = "*"
 
 [dev-packages]
 
