@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.fields import BooleanField
 import phonenumbers
 from phonenumber_field.modelfields import PhoneNumberField
+from django.core.exceptions import ObjectDoesNotExist
 
 # Built in signal for post_save (To extend User)
 from django.db.models.signals import post_save
@@ -18,7 +19,7 @@ class Profile(models.Model):
     text_reminder = BooleanField(default=False)
     
     def __str__(self):
-        return self.user
+        return self.user.username
 
 
 # receiver function called when new User instance  is creted 
@@ -31,7 +32,12 @@ def create_user_profile(sender, instance, created, **kwargs):
 #  receiver function called when User instance is updated
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
+
     instance.profile.save()
+    
+    Profile.objects.create(user=instance)
+
+    
 
 
 
