@@ -26,7 +26,7 @@ class Profile(models.Model):
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        Profile.objects.create(user=instance)
+        Profile.objects.get_or_create(user=instance)
 
 
 #  receiver function called when User instance is updated
@@ -35,9 +35,12 @@ def save_user_profile(sender, instance, **kwargs):
 
     instance.profile.save()
     
-    Profile.objects.create(user=instance)
+    Profile.objects.get_or_create(user=instance)
 
-    
+
+
+# class User_settings(model.Model):
+
 
 
 
@@ -58,7 +61,7 @@ class Bill (models.Model):
         (PHONE, 'phone'),
         (CREDIT_CARD, 'credit card'),
         (INSURANCE, 'insurance'),
-    ]
+    ] # https://www.merixstudio.com/blog/django-models-declaring-list-available-choices-right-way/
 
 
     bill_type = models.CharField(max_length=100, choices=BILL_TYPES, default=CREDIT_CARD)

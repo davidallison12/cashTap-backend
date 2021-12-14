@@ -11,6 +11,10 @@ class BillSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'first_name', 'last_name','email', 'password', 'phone_number', 'email_reminder', 'text_reminder')
+        fields = ('id', 'first_name', 'last_name','email', 'password', 'username')
 
-
+    def create(self, validated_data):
+        user = super(UserSerializer, self).create(validated_data)
+        user.set_password(validated_data['password'])
+        user.save()
+        return user

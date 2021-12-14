@@ -8,6 +8,7 @@ from .views import MyTokenObtainPairView
 
 router = routers.DefaultRouter()
 router.register(r'bills', views.BillView, 'bill')
+router.register(r'users', views.UserCreateView, 'user')
 
 
 
