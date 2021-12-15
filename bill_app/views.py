@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from rest_framework import viewsets, generics
-from .serializers import BillSerializer, UserSerializer
-from .models import Bill, User
+from .serializers import BillSerializer, ProfileSerializer, UserSerializer
+from .models import Bill, User, Profile
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.decorators import permission_classes
@@ -48,3 +48,12 @@ class UserCreateView(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = (AllowAny,)
+
+
+class ProfileView(viewsets.ModelViewSet):
+    serializer_class = ProfileSerializer
+    
+    def get_queryset(self):  #https://stackoverflow.com/questions/34968725/djangorestframework-how-to-get-user-in-viewset
+        user = self.request.user
+        print(user)
+        return Profile.objects.filter(user=user)

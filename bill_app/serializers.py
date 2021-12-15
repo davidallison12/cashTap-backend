@@ -1,4 +1,4 @@
-from .models import User, Bill
+from .models import User, Bill, Profile
 from rest_framework import serializers 
 
 
@@ -11,10 +11,17 @@ class BillSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'first_name', 'last_name','email', 'password', 'username')
+        fields = "__all__"
 
     def create(self, validated_data):
         user = super(UserSerializer, self).create(validated_data)
         user.set_password(validated_data['password'])
         user.save()
         return user
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = "__all__"
+

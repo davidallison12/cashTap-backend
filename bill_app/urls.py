@@ -9,7 +9,7 @@ from .views import MyTokenObtainPairView
 router = routers.DefaultRouter()
 router.register(r'bills', views.BillView, 'bill')
 router.register(r'users', views.UserCreateView, 'user')
-
+router.register(r'profiles', views.ProfileView, 'profile')
 
 
 urlpatterns = [

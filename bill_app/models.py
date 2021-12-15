@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.fields import BooleanField
 import phonenumbers
 from phonenumber_field.modelfields import PhoneNumberField
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, ValidationError
 
 # Built in signal for post_save (To extend User)
 from django.db.models.signals import post_save
@@ -17,6 +17,11 @@ class Profile(models.Model):
     phone_number = PhoneNumberField()
     email_reminder = BooleanField(default=False)
     text_reminder = BooleanField(default=False)
+
+    def save(self,*args, **kwargs):
+        if not self.pk and Profile.objects.exists():
+                raise ValidationError('There can be only one Profile instance')
+        return super(Profile, self).save(*args, **kwargs)
     
     def __str__(self):
         return self.user.username

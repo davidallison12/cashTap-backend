@@ -5,7 +5,7 @@ from .models import Bill, Profile
 # Register your models here.
 
 admin.site.register(Bill)
-
+admin.site.register(Profile)
 
 
 class ProfileInline(admin.StackedInline):
@@ -17,6 +17,8 @@ class ProfileInline(admin.StackedInline):
 # Define new User Admin
 class UserAdmin(BaseUserAdmin):
     inlines = (ProfileInline,)
+
+
 
 
 # Reregister Admin
