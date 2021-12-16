@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = "django-insecure-#28qls^0d0*$n#5q1i#*u%w+)oi9s@l1vf@%p92fw6_ha-5(ma"
-SECRET_KEY= os.getenv("FRONTEND_URL")
+SECRET_KEY= os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -143,10 +143,12 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-CORS_ORIGIN_WHITELIST = [
-     'http://localhost:3000',
-    #  os.getenv("FRONTEND_URL")
-]
+# CORS_ORIGIN_WHITELIST = [
+#      'http://localhost:3000',
+#      os.getenv("FRONTEND_URL")
+# ]
+CORS_ALLOW_ALL_ORIGINS: True
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
