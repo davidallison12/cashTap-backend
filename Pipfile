@@ -11,6 +11,8 @@ django-cors-headers = "*"
 djangorestframework = "*"
 djangorestframework-simplejwt = "*"
 python-dotenv = "*"
+django-heroku = "*"
+gunicorn = "*"
 
 [dev-packages]
 
