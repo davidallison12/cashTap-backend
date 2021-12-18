@@ -38,7 +38,7 @@ class BillView(viewsets.ModelViewSet):
     def get_queryset(self):  #https://stackoverflow.com/questions/34968725/djangorestframework-how-to-get-user-in-viewset
         user = self.request.user
         print(user)
-        return Bill.objects.filter(user=user)
+        return Bill.objects.filter(user=user).pop("password")
 
     # user = request.user
 
