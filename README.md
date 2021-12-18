@@ -5,13 +5,13 @@
 
 
 **Associated Repos**
-Frontend: https://github.com/davidallison12/cashTap-frontend
-Backend: https://github.com/davidallison12/cashTap-backend
+Frontend: https://github.com/davidallison12/cashTap-frontend |
+Backend: https://github.com/davidallison12/cashTap-backend | 
 Twilio Backend: https://github.com/davidallison12/cashTap-twilio
 
 **Deployed Links:**
-Main Site: https://cashtap-frontend.herokuapp.com/
-Backend:https://cashtap-backend.herokuapp.com/
+Main Site: https://cashtap-frontend.herokuapp.com/ | 
+Backend:https://cashtap-backend.herokuapp.com/ |
 Twilio: https://cashtap-backend.herokuapp.com/
 
 cashTap was designed out of the thought of helping those who are in debt, start the journey to becoming debt free and becoming wealth builders. For many who live paycheck to paycheck, things such as Auto-Pay can be more of a burden than a helpful tool. Every penny counts and if one bill is taken early or one pay stub posts late, it can be a world of nightmares moving forward. 
