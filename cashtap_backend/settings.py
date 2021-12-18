@@ -34,7 +34,7 @@ DEBUG = True
 
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://localhost:3000', 'https://cashtap-frontend.herokuapp.com']
 
 
 # Application definition
