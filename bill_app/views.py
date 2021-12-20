@@ -1,13 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from rest_framework import viewsets, generics
+from rest_framework import viewsets, generics, permissions
 from .serializers import BillSerializer, ProfileSerializer, UserSerializer
 from .models import Bill, User, Profile
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.decorators import permission_classes
 from rest_framework.permissions import IsAuthenticated, AllowAny
-
+from django.contrib.auth import get_
 # Create your views here.
 
 
@@ -46,8 +46,10 @@ class BillView(viewsets.ModelViewSet):
 
 class UserCreateView(viewsets.ModelViewSet):
     queryset = User.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+        ]
     serializer_class = UserSerializer
-    permission_classes = (AllowAny,)
 
 
 class ProfileView(viewsets.ModelViewSet):
