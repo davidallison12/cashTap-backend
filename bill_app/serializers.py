@@ -21,7 +21,7 @@ class BillSerializer(serializers.ModelSerializer):
 #             user.save()
 #             return user
 
-class UserSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer): #https://medium.com/django-rest/django-rest-framework-login-and-register-user-fd91cf6029d5
     # password = serializers.Charfield(write_only=True)
     password = serializers.CharField(write_only=True, validators=[validate_password])
     

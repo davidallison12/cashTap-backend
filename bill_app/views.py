@@ -44,7 +44,7 @@ class BillView(viewsets.ModelViewSet):
 
 
 
-class UserCreateView(generics.CreateAPIView):
+class UserCreateView(viewsets.ModelViewSet):
     queryset = User.objects.all()
     permission_classes = (AllowAny,)
     serializer_class = UserSerializer
