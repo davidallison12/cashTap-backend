@@ -1,5 +1,7 @@
+from os import write
 from .models import User, Bill, Profile
 from rest_framework import serializers 
+from django.contrib.auth.password_validation import validate_password
 
 
 class BillSerializer(serializers.ModelSerializer):
@@ -21,6 +23,9 @@ class BillSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
     # password = serializers.Charfield(write_only=True)
+    password = serializers.CharField(write_only=True, validators=[validate_password])
+    
+    
     class Meta:
         model = User
         fields = ("id", "username", "password", "first_name", "last_name", "email")
@@ -29,7 +34,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
 
-        user = User.objects.create_user(
+        user = User.objects.create(
             username=validated_data['username'],
             first_name=validated_data['first_name'],
             last_name=validated_data['last_name'],
