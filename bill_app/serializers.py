@@ -19,7 +19,7 @@ class BillSerializer(serializers.ModelSerializer):
 #             user.save()
 #             return user
 
-class UserSerialzer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     # password = serializers.Charfield(write_only=True)
     class Meta:
         model = User
