@@ -2,6 +2,7 @@ from os import write
 from .models import User, Bill, Profile
 from rest_framework import serializers 
 from django.contrib.auth.password_validation import validate_password
+from django.contrib.auth.hashers import make_password
 
 
 class BillSerializer(serializers.ModelSerializer):
@@ -38,10 +39,10 @@ class UserSerializer(serializers.ModelSerializer): #https://medium.com/django-re
             username=validated_data['username'],
             first_name=validated_data['first_name'],
             last_name=validated_data['last_name'],
-            email=validated_data['email']
+            email=validated_data['email'],
         )
         
-        user.set_password(validated_data['password'])
+        user.make_password(validated_data['password'])
         user.save()
         return user
     
