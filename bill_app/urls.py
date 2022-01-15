@@ -8,7 +8,7 @@ from .views import MyTokenObtainPairView, UserCreateView
 
 router = routers.DefaultRouter()
 router.register(r'bills', views.BillView, 'bill')
-router.register(r'users', views.UserCreateView, 'user')
+# router.register(r'users', views.UserCreateView, 'user')
 router.register(r'profiles', views.ProfileView, 'profile')
 
 
@@ -18,4 +18,5 @@ urlpatterns = [
     path('api/token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     # path('api/register/',include(UserCreateView)
+    path('api/registration', UserCreateView.as_view(), name='register'),
 ]
