@@ -43,7 +43,7 @@ class UserSerializer(serializers.ModelSerializer): #https://medium.com/django-re
             password=make_password(validated_data['password'])
         )
         
-       
+
         user.save()
         return user
     

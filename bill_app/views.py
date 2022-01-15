@@ -1,12 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from rest_framework import viewsets, generics, permissions
+from rest_framework import viewsets, generics, permissions, status
 from .serializers import BillSerializer, ProfileSerializer, UserSerializer
 from .models import Bill, User, Profile
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.decorators import permission_classes
 from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.response import Response
+import uuid
 
 # Create your views here.
 
@@ -45,9 +47,28 @@ class BillView(viewsets.ModelViewSet):
 
 
 class UserCreateView(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    permission_classes = (AllowAny,)
+    # queryset = User.objects.all()
+    # permission_classes = (AllowAny,)
     serializer_class = UserSerializer
+    
+    def post(self, request):
+        serializer = self.get_serializer(data = request.data)
+        # serializer.is_valid(raise_exception = True)
+        # serializer.save()
+
+        if(serializer.is_valid()):
+            serializer.save()
+            return(Response( {
+                "RequestId": str(uuid.uuid4()),
+                "Message": "User created successfully",
+
+                "User": serializer.data
+            },
+            status= status.HTTP_201_CREATED
+            )
+        return Response({"Errors": serializers.error}, status=status.HTTP_201_CREATED)
+            )
+    
 
 
 class ProfileView(viewsets.ModelViewSet):
