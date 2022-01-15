@@ -29,9 +29,10 @@ class UserSerializer(serializers.ModelSerializer): #https://medium.com/django-re
     
     class Meta:
         model = User
-        fields = ("id", "username", "password", "first_name", "last_name", "email")
+        fields = ("username", "password", "first_name", "last_name", "email")
         # write_only_fields = ('password')
 
+    
 
     def create(self, validated_data):
 
