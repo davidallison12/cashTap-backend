@@ -18,13 +18,13 @@ class Profile(models.Model):
     email_reminder = BooleanField(default=False)
     text_reminder = BooleanField(default=False)
 
-    def save(self,*args, **kwargs):
-        if not self.pk and Profile.objects.exists():
-                raise ValidationError('There can be only one Profile instance')
-        return super(Profile, self).save(*args, **kwargs)
+    # def save(self,*args, **kwargs):
+    #     if not self.pk and Profile.objects.exists():
+    #             raise ValidationError('There can be only one Profile instance')
+    #     return super(Profile, self).save(*args, **kwargs)
     
-    def __str__(self):
-        return self.user.username
+    # def __str__(self):
+    #     return self.user.username
 
 
 # receiver function called when new User instance  is creted 
